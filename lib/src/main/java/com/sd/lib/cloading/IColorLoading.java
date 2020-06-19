@@ -10,13 +10,6 @@ public interface IColorLoading
     void setColors(int[] colors);
 
     /**
-     * 返回当前要显示的颜色
-     *
-     * @return
-     */
-    int getColorCurrent();
-
-    /**
      * 设置动画时长，默认1000毫秒
      *
      * @param duration

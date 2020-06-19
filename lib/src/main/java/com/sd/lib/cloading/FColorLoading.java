@@ -22,15 +22,6 @@ public abstract class FColorLoading implements IColorLoading
     }
 
     @Override
-    public int getColorCurrent()
-    {
-        if (mColors == null || mColors.length <= 0)
-            return 0;
-
-        return mColors[mColorIndex];
-    }
-
-    @Override
     public void setDuration(long duration)
     {
         mDuration = duration;
@@ -53,6 +44,14 @@ public abstract class FColorLoading implements IColorLoading
     {
         if (mAnimator != null)
             mAnimator.cancel();
+    }
+
+    private int getColorCurrent()
+    {
+        if (mColors == null || mColors.length <= 0)
+            return 0;
+
+        return mColors[mColorIndex];
     }
 
     private boolean nextIndex()

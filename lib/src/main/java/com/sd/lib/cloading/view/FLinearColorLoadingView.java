@@ -2,7 +2,6 @@ package com.sd.lib.cloading.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
@@ -45,9 +44,6 @@ public class FLinearColorLoadingView extends View implements IColorLoading
     {
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
-
-        final int[] colors = new int[]{Color.parseColor("#6200EE"), Color.parseColor("#03DAC5")};
-        mColorLoading.setColors(colors);
     }
 
     private final FColorLoading mColorLoading = new FColorLoading()
@@ -67,16 +63,24 @@ public class FLinearColorLoadingView extends View implements IColorLoading
         }
     };
 
+    /**
+     * 设置方向
+     * <p>
+     * {@link #ORIENTATION_HORIZONTAL}
+     * <p>
+     * {@link #ORIENTATION_VERTICAL}
+     *
+     * @param orientation
+     */
+    public void setOrientation(int orientation)
+    {
+        mOrientation = orientation;
+    }
+
     @Override
     public void setColors(int[] colors)
     {
         mColorLoading.setColors(colors);
-    }
-
-    @Override
-    public int getColorCurrent()
-    {
-        return mColorLoading.getColorCurrent();
     }
 
     @Override
@@ -115,7 +119,10 @@ public class FLinearColorLoadingView extends View implements IColorLoading
                 canvas.drawLine(startX, 0, stopX, 0, mPaint);
             } else
             {
-
+                mPaint.setStrokeWidth(width);
+                final int startY = (int) ((height - (height * mProgress)) / 2);
+                final int stopY = height - startY;
+                canvas.drawLine(0, startY, 0, stopY, mPaint);
             }
         }
     }

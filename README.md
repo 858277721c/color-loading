@@ -5,7 +5,7 @@ android color loading view
 [![](https://jitpack.io/v/zj565061763/color-loading.svg)](https://jitpack.io/#zj565061763/color-loading)
 
 # Screenshot
-![](https://github.com/zj565061763/blingbutton/blob/master/screenshot/blingbutton.gif?raw=true)
+![](https://thumbsnap.com/i/5chMizsz.gif)
 
 # Demo
 ```xml

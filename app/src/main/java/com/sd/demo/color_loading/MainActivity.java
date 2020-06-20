@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sd.demo.color_loading.databinding.ActivityMainBinding;
-import com.sd.lib.cloading.view.FLinearColorLoadingView;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -18,17 +17,13 @@ public class MainActivity extends AppCompatActivity
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
-        mBinding.viewLoadingHorizontal.start();
-
-        mBinding.viewLoadingVertical.setOrientation(FLinearColorLoadingView.ORIENTATION_VERTICAL);
-        mBinding.viewLoadingVertical.start();
+        mBinding.viewLoading.start();
     }
 
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
-        mBinding.viewLoadingHorizontal.stop();
-        mBinding.viewLoadingVertical.stop();
+        mBinding.viewLoading.stop();
     }
 }

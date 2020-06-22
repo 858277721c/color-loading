@@ -84,6 +84,13 @@ public abstract class FColorLoading implements IColorLoading
                     super.onAnimationRepeat(animation);
                     nextIndex();
                 }
+
+                @Override
+                public void onAnimationEnd(Animator animation)
+                {
+                    super.onAnimationEnd(animation);
+                    FColorLoading.this.onStop();
+                }
             });
             mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
             {
@@ -102,4 +109,6 @@ public abstract class FColorLoading implements IColorLoading
     protected abstract void invalidateView();
 
     protected abstract void onAnimationUpdate(int color, float progress);
+
+    protected abstract void onStop();
 }

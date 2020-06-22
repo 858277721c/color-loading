@@ -61,6 +61,14 @@ public class FLinearColorLoadingView extends View implements IColorLoading
             mProgress = progress;
             invalidate();
         }
+
+        @Override
+        protected void onStop()
+        {
+            mColor = 0;
+            mProgress = 0;
+            invalidate();
+        }
     };
 
     /**

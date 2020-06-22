@@ -7,8 +7,13 @@ import android.graphics.Color;
 
 public abstract class FColorLoading implements IColorLoading
 {
-    private int[] mColors = new int[]{Color.parseColor("#D81B60"), Color.parseColor("#03DAC5"), Color.parseColor("#6200EE")};
-    private int mColorIndex;
+    private int[] mColors = new int[]{
+            Color.parseColor("#03DAC5"),
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#F06292")
+    };
+
+    private int mColorIndex = 0;
     private long mDuration = 1000;
 
     private ValueAnimator mAnimator;
@@ -43,7 +48,10 @@ public abstract class FColorLoading implements IColorLoading
     public void stop()
     {
         if (mAnimator != null)
+        {
             mAnimator.cancel();
+            mColorIndex = 0;
+        }
     }
 
     private int getColorCurrent()

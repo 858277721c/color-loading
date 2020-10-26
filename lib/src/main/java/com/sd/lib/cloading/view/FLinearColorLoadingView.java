@@ -43,7 +43,7 @@ public class FLinearColorLoadingView extends View implements IColorLoading
     private void init()
     {
         mPaint.setAntiAlias(true);
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStyle(Paint.Style.FILL);
     }
 
     private final FColorLoading mColorLoading = new FColorLoading()
@@ -121,16 +121,14 @@ public class FLinearColorLoadingView extends View implements IColorLoading
             mPaint.setColor(mColor);
             if (mOrientation == ORIENTATION_HORIZONTAL)
             {
-                mPaint.setStrokeWidth(height);
                 final int startX = (int) ((width - (width * mProgress)) / 2);
                 final int stopX = width - startX;
-                canvas.drawLine(startX, 0, stopX, 0, mPaint);
+                canvas.drawRect(startX, 0, stopX, height, mPaint);
             } else
             {
-                mPaint.setStrokeWidth(width);
                 final int startY = (int) ((height - (height * mProgress)) / 2);
                 final int stopY = height - startY;
-                canvas.drawLine(0, startY, 0, stopY, mPaint);
+                canvas.drawRect(0, startY, width, stopY, mPaint);
             }
         }
     }

@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 20200622
-        versionName "1.0.0-beta2"
+        versionCode 20201026
+        versionName "1.0.0-beta3"
     }
 
     buildTypes {
@@ -24,31 +24,25 @@ android {
 dependencies {
 }
 
-// 指定编码
 tasks.withType(Javadoc) {
     options {
-        encoding "UTF-8"
+        encoding 'UTF-8'
         charSet 'UTF-8'
-        failOnError false
     }
 }
 
-// 打包源码
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+    getArchiveClassifier().set('sources')
+    from android.sourceSets.main.java.sourceFiles
 }
 
 task javadoc(type: Javadoc) {
-    failOnError false
     source = android.sourceSets.main.java.sourceFiles
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
 }
 
-// 制作文档(Javadoc)
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    getArchiveClassifier().set('javadoc')
     from javadoc.destinationDir
 }
 
